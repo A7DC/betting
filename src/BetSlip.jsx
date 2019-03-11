@@ -1,11 +1,5 @@
 import * as React from "react";
 
-type Props = { 
-  chosenBets: any,
-  events: any,
-}
-
-
 const Bet = ({ chosenBet, event }) => (
   <div>
     <h6>{event.home.name} - {event.away.name}</h6>
@@ -14,9 +8,7 @@ const Bet = ({ chosenBet, event }) => (
   </div>
 )
 
-export class BetSlip extends React.Component<Props> {
-
-  input: HTMLInputElement;
+export class BetSlip extends React.Component {
 
   state = {
     stake: 0,
@@ -52,10 +44,6 @@ export class BetSlip extends React.Component<Props> {
     this.setState({ stake: event.target.value }, () => {
       this.calculateTotal(this.state.stake, this.props.chosenBets)
     })
-  }
-
-  showBetslip = ({ chosenBets}) => {
-    // console.log(chosenBets, 'chosenBets asdfsdg')
   }
 
   render() {
@@ -94,7 +82,7 @@ export class BetSlip extends React.Component<Props> {
 }
 
 // Define some standard CSS for your component
-const style: React.CSSProperties = {
+const style = {
   color: "#333",
   fontSize: 20,
   width: "100%",

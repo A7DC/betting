@@ -47,6 +47,7 @@ const button = {
     border: 'none',
     height: scale.s3 + scale.s1,
     fontSize: typeScale.t1,
+    fontWeight: 600,
     marginLeft: 'auto',
     textTransform: 'uppercase'
 }

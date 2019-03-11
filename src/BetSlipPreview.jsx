@@ -9,7 +9,8 @@ export class BetSlipPreview extends React.Component {
   state = {
     totalBets: 0,
     nextLevelIn: 3,
-    bonus: 10,
+    currentBonus: 10,
+    previousBonus: undefined,
     scrollPastHeader: false,
   }
 
@@ -41,7 +42,7 @@ export class BetSlipPreview extends React.Component {
         if (totalBets === i) {
           this.setState({ 
             nextLevelIn: Math.abs(i - 3),
-            bonus: this.state.bonus,
+            currentBonus: this.state.currentBonus,
           })
         }
       }
@@ -52,7 +53,8 @@ export class BetSlipPreview extends React.Component {
         if (totalBets === i) {
           this.setState({ 
             nextLevelIn: Math.abs(i - 5),
-            bonus: 50,
+            currentBonus: 50,
+            previousBonus: 10,
           })
         }
       }
@@ -63,7 +65,8 @@ export class BetSlipPreview extends React.Component {
         if (totalBets === i) {
           this.setState({ 
             nextLevelIn: Math.abs(i - 6),
-            bonus: 100,
+            currentBonus: 100,
+            previousBonus: 100,
           })
         }
       }
@@ -109,14 +112,16 @@ export class BetSlipPreview extends React.Component {
                 bottom: -this.state.height,
                 transform: 'translateY(' + y + 'px' + ')'
                 }}>
-                <h3 style={{
-                  fontSize: type.t2,
-                  margin: `${scale.s3} 0`,
-                  color: color.yellow,
-                }}>{this.state.bonus === 100 ? '100% win bonus!' : `${this.state.bonus}% win bonus in ${this.state.nextLevelIn} bets`}</h3>
-                <div style={{ display: 'flex' }}>
-                  <span>{this.state.totalBets} bets in slip</span>
-                  <span style={{ marginLeft: 'auto' }}>Price: {this.state.totalOdds}</span>
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                  <h3 style={{
+                    fontSize: type.t2,
+                    margin: 0,
+                    color: color.yellow,
+                  }}>{this.state.currentBonus === 100 ? '100% win bonus!' : `Get a ${this.state.currentBonus}% win bonus in ${this.state.nextLevelIn} bets`}</h3>
+                  <span style={{ 
+                    ...type.t5,
+                    ...span,
+                  }}>Price: {Math.round(this.state.totalOdds * 100) / 100} {this.state.totalBets >= 3 ? `(+${this.state.previousBonus}% win bonus active)` : null}</span>
                 </div>
               </div>
             )
@@ -127,13 +132,20 @@ export class BetSlipPreview extends React.Component {
   }
 }
 
-// Define some standard CSS for your component
+
 const style = {
-  padding: scale.s3,
+  paddingLeft: scale.s4,
+  paddingRight: scale.s4,
+  paddingTop: scale.s3,
+  paddingBottom: scale.s3,
   position: 'fixed',
   left: 0,
   right: 0,
   bottom: 0,
   background: color.black,
   color: color.white,
-};
+}
+
+const span = {
+  color: color.white
+}

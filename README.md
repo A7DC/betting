@@ -1,3 +1,11 @@
+### To do list
+
+1. Deselecting / removing bets
+2. DRY in places where you've commented 
+3. Show the betslip
+
+---------------------
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

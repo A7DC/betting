@@ -4,6 +4,7 @@ export const type = {
   t1: undefined,
   t2: typeScale.f4,
   t5: {
+    fontWeight: 600,
     fontSize: typeScale.f5,
     color: color.black,
     margin: `0 0 ${scale.s1}px 0`,
