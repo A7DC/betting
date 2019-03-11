@@ -74,7 +74,7 @@ export class BetSlipPreview extends React.Component {
   getMotionProps() {
     return this.state.scrollPastHeader === false
       ? { style: { y: spring(0) } }
-      : { style: { y: spring(200) } }
+      : { style: { y: spring(-this.state.height) } }
   }
 
   render() {
@@ -88,11 +88,12 @@ export class BetSlipPreview extends React.Component {
               ref={(el) => { this.element = el; }}
               style={{ 
                 ...style,
-                bottom: this.state.height,
+                bottom: -this.state.height,
                 transform: 'translateY(' + y + 'px' + ')'
                 }}>
                 <h3 style={{
                   fontSize: type.t2,
+                  margin: `${scale.s3} 0`,
                   color: color.yellow,
                 }}>{this.state.bonus === 100 ? '100% win bonus!' : `${this.state.bonus}% win bonus in ${this.state.nextLevelIn} bets`}</h3>
                 <div style={{ display: 'flex' }}>
