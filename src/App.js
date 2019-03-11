@@ -201,7 +201,7 @@ export default class App extends React.Component{
           chosenBets={this.state.chosenBets}
           events={this.props.events}
         /> */}
-        <BetSlipPreview chosenBets={this.state.chosenBets} />>
+        <BetSlipPreview chosenBets={this.state.chosenBets} />
       </div>
     )
   }
@@ -211,7 +211,9 @@ export default class App extends React.Component{
 const style = {
   height: "100%",
   fontFamily: 'proxima-nova, sans-serif',
-  background: 'rgb(237, 232, 237)'
+  background: 'rgb(237, 232, 237)',
+  backgroundImage: 'url(images/dark-bg.png)',
+  backgroundRepeat: 'repeat-x'
 }
 
 const outter = {
@@ -219,5 +221,4 @@ const outter = {
   position: 'relative',
   height: '100%',
   width: '100%',
-
 }

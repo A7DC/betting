@@ -17,25 +17,26 @@ export class Header extends React.Component {
         // console.log(this.props.chosenBets.filter(x => Object.keys(x).length).length, ' dfdg')
         return (
             <header style={container}>
+                <img style={logo} src={'/images/logo.png'} />
                 <button style={button}>{this.state.totalBets} bets</button>
             </header>
         );
     }
 }
 
-// Define some standard CSS for your component
 const container = {
-    height: 92,
-    paddingTop: scale.s2, 
-    paddingRight: scale.s3, 
+    padding: scale.s3,
+    paddingBottom: 0,
     display: 'flex',
     textAlign: 'center',
-    color: '#8855FF',
     background: color.black,
-    overflow: 'hidden'
 }
 
-// Define some standard CSS for your component
+const logo = {
+    width: 120,
+    height: 19,
+}
+
 const button = {
     background: color.yellow,
     color: color.black,
@@ -45,7 +46,6 @@ const button = {
     justifyContent: 'center',
     border: 'none',
     height: scale.s3 + scale.s1,
-    marginTop: scale.s2,
     fontSize: typeScale.t1,
     marginLeft: 'auto',
     textTransform: 'uppercase'
