@@ -5,6 +5,7 @@ import { BetSlipPreview } from './BetSlipPreview'
 import { Header } from './Header'
 import { scale } from './styles/variables'
 
+
 export default class App extends React.Component{
 
   static defaultProps = {
@@ -139,13 +140,27 @@ export default class App extends React.Component{
   state = {
     chosenBets: this.props.chosenBets,
     events: this.props.events,
+    scrolledPastHeader: false,
   }
 
-  static getDerivedStateFromProps(props, state) {
+  getDerivedStateFromProps(props, state) {
     return {
       events: props.events,
       chosenBets: props.chosenBets,
     }
+  }
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll)
+  }
+
+  handleScroll = (e) => {
+    const scrollY = window.scrollY
+    console.log(scrollY, 'scrollY')
   }
 
   getSelection = (val, matchNumber) => {
@@ -163,6 +178,14 @@ export default class App extends React.Component{
     // console.log(data.chosenBets, 'data.chosenBets')
   }
 
+
+// getMotionProps() {
+//   const { scrolledPastHeader } = this.state
+//   return scrolledPastHeader === false
+//     ? { style: { value: spring(0) } }
+//     : { style: { value: spring(500) } }
+//   }
+
   render() {
     return (
       <div style={style}>
@@ -178,7 +201,7 @@ export default class App extends React.Component{
           chosenBets={this.state.chosenBets}
           events={this.props.events}
         /> */}
-        <BetSlipPreview chosenBets={this.state.chosenBets} />
+        <BetSlipPreview chosenBets={this.state.chosenBets} />>
       </div>
     )
   }

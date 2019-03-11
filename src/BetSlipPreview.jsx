@@ -2,13 +2,15 @@ import * as React from 'react';
 import { Event } from './Event'
 import { color, scale, typeScale } from './styles/variables'
 import { type } from './styles/typography'
-
+import { Motion, spring } from 'react-motion'
+import { throws } from 'assert';
 
 export class BetSlipPreview extends React.Component {
   state = {
     totalBets: 0,
     nextLevelIn: 3,
-    bonus: 10
+    bonus: 10,
+    scrollPastHeader: false,
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -16,7 +18,11 @@ export class BetSlipPreview extends React.Component {
     if (prevProps !== this.props) {
       this.setState({
         totalBets: this.props.chosenBets.filter(x => Object.keys(x).length).length
-      }, () => this.calculateWinBonus(this.state.totalBets) )
+      }, () => {
+        this.calculateWinBonus(this.state.totalBets)
+        this.setState({ scrollPastHeader: true})
+        console.log("dfgfdg")
+      } )
     }
   }
 
@@ -36,7 +42,7 @@ export class BetSlipPreview extends React.Component {
           this.setState({ 
             nextLevelIn: Math.abs(i - 3),
             bonus: this.state.bonus,
-          }, () => console.log(this.state.nextLevelIn, 'nextLevelIn'))
+          })
         }
       }
     } 
@@ -47,7 +53,7 @@ export class BetSlipPreview extends React.Component {
           this.setState({ 
             nextLevelIn: Math.abs(i - 5),
             bonus: 50,
-          }, () => console.log(this.state.nextLevelIn, 'nextLevelIn'))
+          })
         }
       }
     } 
@@ -58,34 +64,45 @@ export class BetSlipPreview extends React.Component {
           this.setState({ 
             nextLevelIn: Math.abs(i - 6),
             bonus: 100,
-          }, () => console.log(this.state.nextLevelIn, 'nextLevelIn'))
+          })
         }
       }
     } 
+  }
 
 
+  getMotionProps() {
+    return this.state.scrollPastHeader === false
+      ? { style: { y: spring(0) } }
+      : { style: { y: spring(200) } }
   }
 
   render() {
-    const { chosenBets } = this.props
-
     return (
-      <div 
-        style={{
-          ...style,
-          bottom: this.state.height,
-        }
-        }
-        ref={(el) => { this.element = el; }}>
-        >
-        <h3 style={{
-          fontSize: type.t2,
-          color: color.yellow,
-        }}>{this.state.bonus === 100 ? '100% win bonus!' : `${this.state.bonus}% win bonus in ${this.state.nextLevelIn} bets`}</h3>
-        <div style={{display: 'flex'}}>
-          <span>{this.state.totalBets} bets in slip</span>
-          <span style={{ marginLeft: 'auto' }}>Price: $price</span>
-        </div>
+
+      <div>
+        <Motion {...this.getMotionProps()}>
+          {({ y }) => {
+            return (
+              <div 
+              ref={(el) => { this.element = el; }}
+              style={{ 
+                ...style,
+                bottom: this.state.height,
+                transform: 'translateY(' + y + 'px' + ')'
+                }}>
+                <h3 style={{
+                  fontSize: type.t2,
+                  color: color.yellow,
+                }}>{this.state.bonus === 100 ? '100% win bonus!' : `${this.state.bonus}% win bonus in ${this.state.nextLevelIn} bets`}</h3>
+                <div style={{ display: 'flex' }}>
+                  <span>{this.state.totalBets} bets in slip</span>
+                  <span style={{ marginLeft: 'auto' }}>Price: $price</span>
+                </div>
+              </div>
+            )
+          }}
+        </Motion>
       </div>
     )
   }
