@@ -55,7 +55,7 @@ export class BetSlip extends React.Component<Props> {
   }
 
   showBetslip = ({ chosenBets}) => {
-    console.log(chosenBets, 'chosenBets asdfsdg')
+    // console.log(chosenBets, 'chosenBets asdfsdg')
   }
 
   render() {

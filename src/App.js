@@ -143,7 +143,7 @@ export default class App extends React.Component{
     scrolledPastHeader: false,
   }
 
-  getDerivedStateFromProps(props, state) {
+  static getDerivedStateFromProps(props, state) {
     return {
       events: props.events,
       chosenBets: props.chosenBets,

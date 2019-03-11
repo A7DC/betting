@@ -20,8 +20,8 @@ export class BetSlipPreview extends React.Component {
         totalBets: this.props.chosenBets.filter(x => Object.keys(x).length).length
       }, () => {
         this.calculateWinBonus(this.state.totalBets)
+        this.calculateOdds(this.props.chosenBets)
         this.setState({ scrollPastHeader: true})
-        console.log("dfgfdg")
       } )
     }
   }
@@ -70,6 +70,24 @@ export class BetSlipPreview extends React.Component {
     } 
   }
 
+  calculateOdds = (chosenBets) => {
+
+    let temporayArray = []
+    chosenBets.map((val, i) => { temporayArray.push(val.odds) })
+
+    let oddsArray = []
+    temporayArray.forEach(element => {
+      if (typeof element == 'number') {
+        oddsArray.push(element)
+      }
+    })
+      
+    this.setState({
+      totalOdds: oddsArray.reduce((a, b) => a * b)
+    })
+
+  }
+
 
   getMotionProps() {
     return this.state.scrollPastHeader === false
@@ -98,7 +116,7 @@ export class BetSlipPreview extends React.Component {
                 }}>{this.state.bonus === 100 ? '100% win bonus!' : `${this.state.bonus}% win bonus in ${this.state.nextLevelIn} bets`}</h3>
                 <div style={{ display: 'flex' }}>
                   <span>{this.state.totalBets} bets in slip</span>
-                  <span style={{ marginLeft: 'auto' }}>Price: $price</span>
+                  <span style={{ marginLeft: 'auto' }}>Price: {this.state.totalOdds}</span>
                 </div>
               </div>
             )
