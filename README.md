@@ -3,6 +3,8 @@
 1. Deselecting / removing bets
 2. DRY in places where you've commented 
 3. Show the betslip
+4. Include more realistic data
+5. Calculate the totals in a HOC or parent container instead of in each individual component 
 
 ---------------------
 

@@ -197,10 +197,10 @@ export default class App extends React.Component{
             events={this.state.events}
           />
         </div>
-        {/* <BetSlip
+        <BetSlip
           chosenBets={this.state.chosenBets}
           events={this.props.events}
-        /> */}
+        />
         <BetSlipPreview chosenBets={this.state.chosenBets} />
       </div>
     )

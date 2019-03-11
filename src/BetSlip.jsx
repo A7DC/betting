@@ -1,4 +1,5 @@
 import * as React from "react";
+import { color, scale } from './styles/variables'
 
 const Bet = ({ chosenBet, event }) => (
   <div>
@@ -15,6 +16,8 @@ export class BetSlip extends React.Component {
     totalOdds: 0,
     payout: 0,
     open: false,
+    width: 0,
+    height: 0,
   }
 
   componentDidUpdate(prevProps) {
@@ -25,6 +28,19 @@ export class BetSlip extends React.Component {
         this.setState({open: true})
       }
     }
+  }
+
+  componentDidMount() {
+    this.updateWindowDimensions();
+    window.addEventListener('resize', this.updateWindowDimensions);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowDimensions);
+  }
+
+  updateWindowDimensions = () => {
+    this.setState({ width: window.innerWidth, height: window.innerHeight });
   }
 
   calculateTotal = (stake, chosenBets) => {
@@ -50,32 +66,38 @@ export class BetSlip extends React.Component {
     const { chosenBets } = this.props
     const { totalOdds, payout } = this.state
     return (
-    <div style={style}>
-        {chosenBets.map((val, i) => {
-          if (val.name) {
-            return (
-                <Bet
-                  key={i}
-                  chosenBet={val}
-                  event={this.props.events[i]}
-                />
-            )
+      <div 
+      style={{
+          ...style,
+          bottom: this.state.height
+      }}
+      >
+          {chosenBets.map((val, i) => {
+            if (val.name) {
+              console.log(chosenBets, 'chosenBets')
+              return (
+                  <Bet
+                    key={i}
+                    chosenBet={val}
+                    event={this.props.events[i]}
+                  />
+              )
+            }
+          })}
+          {this.state.open ? 
+            <div>
+              <input
+                value={this.state.stake}
+                onChange={this.handleChange}
+                placeholder='Type something...'
+                type='number'
+                ref={(input) => { this.input = input }}
+              />
+              {`The total odds are ${totalOdds}`}
+              {`The total payout is ${payout}`} 
+            </div> : null
           }
-        })}
-        {this.state.open ? 
-          <div>
-            <input
-              value={this.state.stake}
-              onChange={this.handleChange}
-              placeholder='Type something...'
-              type='number'
-              ref={(input) => { this.input = input }}
-            />
-            {`The total odds are ${totalOdds}`}
-            {`The total payout is ${payout}`} 
-          </div> : null
-        }
-    </div>
+      </div>
     )
   }
 
@@ -83,9 +105,13 @@ export class BetSlip extends React.Component {
 
 // Define some standard CSS for your component
 const style = {
-  color: "#333",
   fontSize: 20,
   width: "100%",
   display: "flex",
-  flexDirection: 'column'
+  flexDirection: 'column',
+  background: color.black,
+  color: color.white,
+  left: 0,
+  right: 0,
+  top: 0,
 };
