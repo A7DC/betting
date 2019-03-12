@@ -98,10 +98,14 @@ export class BetSlipPreview extends React.Component {
       : { style: { y: spring(-this.state.height) } }
   }
 
+  handleClick = (screen) => {
+    this.props.onClick(screen)
+  }
+
   render() {
     return (
 
-      <div>
+      <div onClick={() => this.handleClick('betslips')}>
         <Motion {...this.getMotionProps()}>
           {({ y }) => {
             return (
@@ -131,7 +135,6 @@ export class BetSlipPreview extends React.Component {
     )
   }
 }
-
 
 const style = {
   paddingLeft: scale.s4,

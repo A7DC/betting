@@ -141,6 +141,7 @@ export default class App extends React.Component{
     chosenBets: this.props.chosenBets,
     events: this.props.events,
     scrolledPastHeader: false,
+    activeScreen: 'home',
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -178,13 +179,9 @@ export default class App extends React.Component{
     // console.log(data.chosenBets, 'data.chosenBets')
   }
 
-
-// getMotionProps() {
-//   const { scrolledPastHeader } = this.state
-//   return scrolledPastHeader === false
-//     ? { style: { value: spring(0) } }
-//     : { style: { value: spring(500) } }
-//   }
+  openBetSlips = (screen) => {
+    this.setState({ activeScreen: screen}, () => console.log(this.state.activeScreen, 'activeScreen'))
+  }
 
   render() {
     return (
@@ -198,10 +195,11 @@ export default class App extends React.Component{
           />
         </div>
         <BetSlip
+          activeScreen={this.state.activeScreen}
           chosenBets={this.state.chosenBets}
           events={this.props.events}
         />
-        <BetSlipPreview chosenBets={this.state.chosenBets} />
+        <BetSlipPreview onClick={this.openBetSlips} chosenBets={this.state.chosenBets} />
       </div>
     )
   }

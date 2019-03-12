@@ -8,7 +8,7 @@ export const color = {
   teal: 'rgb(2, 143, 172)',
   yellow: 'rgb(255, 222, 20)',
   // grays
-  black: 'rgb(51, 51, 51)',
+  black: 'rgb(35, 31, 32)',
   white: 'rgb(255, 255, 255)',
   nearWhite: 'rgb(244, 242, 244)',
   moonGray: 'rgb(221, 221, 221)',

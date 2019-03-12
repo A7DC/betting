@@ -1,10 +1,17 @@
 ### To do list
 
-1. Deselecting / removing bets
-2. DRY in places where you've commented 
-3. Show the betslip
-4. Include more realistic data
-5. Calculate the totals in a HOC or parent container instead of in each individual component 
+* Include the counter on the betslip
+* Show "X bets till 10%" etc on betslip
+* Deselecting / removing bets
+* DRY in places where you've commented 
+* Include more realistic data as per the designs (e.g different events, sports, live fixtures, etc)
+* Calculate the totals in a HOC or parent container instead of in each individual component 
+* Convert to Typescript 
+* Pluralisation of words (e.g betting BETS are 0, should be '0 BETS', but if 1 should be '1 BET')
+* Clicking yellow bets button in header should open betslips
+* Border radius on buttons and inputs 
+* Deploy to Heroku
+
 
 ---------------------
 

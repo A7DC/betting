@@ -2,16 +2,8 @@ import * as React from 'react'
 import { color, scale } from './styles/variables'
 import { type } from './styles/typography'
 
-type Props = {
-    home?: any,
-    away?: any,
-    draw?: any,
-    getSelection?: any,
-    matchNumber?: any,
-    chosenBet?: any,
-}
 
-export class Event extends React.Component<Props> {
+export class Event extends React.Component {
     render() {
         const { home, away, draw, matchNumber, chosenBet, getSelection } = this.props
         // console.log(matchNumber, ' matchNumber')
