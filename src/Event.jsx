@@ -12,7 +12,7 @@ export class Event extends React.Component {
                 <div style={{
                     width: '100%'
                 }}>
-                    <h5 style={type.t5}>{`${home.name} (1) - ${away.name} (2)`}</h5>
+                    <h5 style={type.t5}>{`${home.name} - ${away.name}`}</h5>
                     <h6 style={type.t6}>English Premier League {/* need to get from Data object */}</h6>
                 </div>
                 <div style={{
@@ -64,7 +64,7 @@ const Button = ({ chosenBet, matchNumber, type, getSelection}) => (
 )
 
 // Define some standard CSS for your component
-const container: React.CSSProperties = {
+const container = {
     overflow: 'hidden',
     display: 'flex',
     flexDirection: 'column',
@@ -72,7 +72,7 @@ const container: React.CSSProperties = {
 }
 
 // Define some standard CSS for your component
-const button: React.CSSProperties = {
+const button = {
     display: 'flex',
     flexBasis: '33%',
     flexGrow: 0,
@@ -82,13 +82,13 @@ const button: React.CSSProperties = {
 }
 
 // Define some standard CSS for your component
-const content: React.CSSProperties = {
+const content = {
     padding: scale.s2,
     flex: 1,
 }
 
 // Define some standard CSS for your component
-const icon: React.CSSProperties = {
+const icon = {
     borderRadius: `${scale.s1} 0 0 ${scale.s1}`,
     padding: scale.s2,
 }

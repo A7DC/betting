@@ -12,16 +12,16 @@ export default class App extends React.Component{
     events: [
       {
         home: {
-          name: 'Real Madrid',
-          odds: 1.69
+          name: 'Bournemouth',
+          odds: 2.05
         },
         away: {
-          name: 'Ajax',
-          odds: 5.00
+          name: 'Newcastle United',
+          odds: 3.50
         },
         draw: {
           name: 'Draw',
-          odds: 4.20
+          odds: 3.70
         },
       },
       {
@@ -41,85 +41,85 @@ export default class App extends React.Component{
       {
         home: {
           name: 'Fullham',
-          odds: 3.00
+          odds: 1.57
         },
         away: {
           name: 'Chelsea FC',
-          odds: 5.00
+          odds: 4.20
         },
         draw: {
           name: 'Draw',
-          odds: 4.35
+          odds: 2.40
         },
       },
       {
         home: {
           name: 'Celtic',
-          odds: 3.00
+          odds: 10.00
         },
         away: {
           name: 'Rangers',
-          odds: 4.00
+          odds: 6.00
         },
         draw: {
           name: 'Draw',
-          odds: 4.35
+          odds: 1.28
         },
       },
       {
         home: {
-          name: 'Real Madrid',
+          name: 'Everton',
           odds: 1.69
         },
         away: {
-          name: 'Ajax',
-          odds: 5.00
+          name: 'Chelsea',
+          odds: 3.10
         },
         draw: {
           name: 'Draw',
-          odds: 4.20
+          odds: 1.95
         },
       },
       {
         home: {
-          name: 'Derby County',
-          odds: 2.00
+          name: 'Fulham',
+          odds: 13.00
         },
         away: {
-          name: 'Wigan Athletic',
-          odds: 3.00
+          name: 'Manchester City',
+          odds: 8.00
         },
         draw: {
           name: 'Draw',
-          odds: 4.35
+          odds: 1.19
         },
       },
       {
         home: {
-          name: 'Fullham',
+          name: 'Brighton and Hove Albion',
           odds: 3.00
         },
         away: {
-          name: 'Chelsea FC',
-          odds: 5.00
+          name: 'Southamptom',
+          odds: 3.15
         },
         draw: {
           name: 'Draw',
-          odds: 4.35
+          odds: 2.40
         },
       },
       {
         home: {
-          name: 'Celtic',
-          odds: 3.00
+          name: 'Manchester United',
+          odds: 1.47
         },
         away: {
-          name: 'Rangers',
-          odds: 4.00
+          name: 'Watford',
+          odds: 7.59
         },
         draw: {
           name: 'Draw',
-          odds: 4.35
+          odds: 2.40
         },
       },
     ],
