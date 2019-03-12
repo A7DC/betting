@@ -86,7 +86,7 @@ export class BetSlipPreview extends React.Component {
     })
       
     this.setState({
-      totalOdds: oddsArray.reduce((a, b) => a * b)
+      totalOdds: oddsArray.reduce((a, b) => a * b, 0)
     })
 
   }

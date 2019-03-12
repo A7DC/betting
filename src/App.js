@@ -5,7 +5,6 @@ import { BetSlipPreview } from './BetSlipPreview'
 import { Header } from './Header'
 import { scale } from './styles/variables'
 
-
 export default class App extends React.Component{
 
   static defaultProps = {
@@ -186,7 +185,7 @@ export default class App extends React.Component{
   render() {
     return (
       <div style={style}>
-        <Header chosenBets={this.props.chosenBets} />
+        <Header onClick={this.openBetSlips} chosenBets={this.props.chosenBets} />
         <div style={outter}>
           <EventList
             getSelection={this.getSelection}

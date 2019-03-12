@@ -13,12 +13,14 @@ export class Header extends React.Component {
             })
         }
     }
+
     render() {
+        console.log(this.props, 'props')
         // console.log(this.props.chosenBets.filter(x => Object.keys(x).length).length, ' dfdg')
         return (
             <header style={container}>
                 <img style={logo} src={'/images/logo.png'} />
-                <button style={button}>{this.state.totalBets} bets</button>
+                <button onClick={() => this.props.onClick('betslips')} style={button}>{this.state.totalBets} bets</button>
             </header>
         );
     }
