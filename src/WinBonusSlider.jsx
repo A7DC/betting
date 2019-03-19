@@ -80,8 +80,7 @@ export class WinBonusSlider extends React.Component {
       return (
         <span style={{ 
           color: val < this.state.activeBonus ? color.nearBlack : val === this.state.activeBonus ? color.yellow : color.silver
-          // color: val === this.state.activeBonus ? color.yellow : color.silver
-        }}>{i * 10}%</span>
+        }}>{val}%</span>
       )
     })
     return labels
