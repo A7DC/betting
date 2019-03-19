@@ -76,7 +76,7 @@ export class BetSlipPreview extends React.Component {
                     display: 'block',
                   }}>+ win bonus</span>
                   </h3>
-                  <div style={{flex: 2, paddingLeft: scale.s4, paddingRight: scale.s4}}>
+                  <div style={{flex: 2, paddingLeft: scale.s4}}>
                     <WinBonusSlider totalBets={totalBets} />
                   </div>
                 </div>

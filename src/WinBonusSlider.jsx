@@ -47,43 +47,61 @@ export class WinBonusSlider extends React.Component {
   }
 
   calcSliderProgressBar = (totalBets) => {
-
-    for (let i = 0; i <= this.state.max; i++) {
+    const {min, max} = this.state
+    for (let i = 0; i < max; i++) {
       if (totalBets === i) {
         this.setState({
-          slideWidth: (i * 100) / (2 - 8) * -1,
+          slideWidth: (i * 100) / (min - (max - 2)) * -1,
         })
       }
     }
+  }
 
+  renderDots() {
+    const dots = this.state.tiers.map((val, i) => {
+      return (
+        <div>
+          <div
+            key={i}
+            style={{
+              ...style.dot,
+              backgroundColor: val <= this.state.activeBonus ? color.yellow : color.nearBlack
+            }}
+          >
+          </div>
+        </div>
+      )
+    })
+    return dots
+  }
+
+  renderLabels() {
+    const labels = this.state.tiers.map(i => {
+      return (
+        <span style={{ color: color.silver }}>{i}%</span>
+      )
+    })
+    return labels
   }
 
   render() {
     return (
       <div>
-        <div style={style.ballContainer}>
-          {this.state.tiers.map((val, i) => {
-            return (
-              <div>
-                <div
-                  key={i}
-                  style={{
-                    ...style.dot,
-                    backgroundColor: val <= this.state.activeBonus ? color.yellow : color.nearBlack
-                  }}
-                >
-                </div>
-                <span syle={{color: color.silver}}>{i}</span>
-              </div>
-            )
-          })}
+        <div style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+        }}>
+          {this.renderLabels()}
         </div>
         <div style={style.outter}> 
+        <div style={style.ballContainer}>
+          {this.renderDots()}
+        </div>
           <div style={{
             ...style.inner,
             width: `${this.state.slideWidth}%`
-            // width: this.state.activeBonus == this.state.tiers[1] ? '25%' : ''
-          }}></div>
+          }}>
+          </div>
         </div>
       </div>
     )
@@ -96,17 +114,26 @@ const style = {
     position: 'relative',
     backgroundColor: color.nearBlack,
     height: scale.s1 / 2,
-    width: '100%',
+    width: '95%',
     marginTop: scale.s3,
+    marginBottom: scale.s3,
   },
   inner: {
     position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
     backgroundColor: color.yellow,
     height: '100%',
   },
   ballContainer: {
     display: 'flex',
     justifyContent: 'space-between',
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: '-0.4rem',
   },
   dot: {
     width: scale.s3,
