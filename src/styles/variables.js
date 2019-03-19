@@ -2,17 +2,18 @@ export const color = {
   lime: 'rgb(138, 198, 63)',
   darkerlime: 'rgb(123, 175, 60)',
   grass: 'rgb(13, 122, 61)',
-  black: 'rgb(35, 31, 32)',
   purple: 'rgb(128, 41, 134)',
   orange: 'rgb(231, 77, 37)',
   teal: 'rgb(2, 143, 172)',
   yellow: 'rgb(255, 222, 20)',
   // grays
   black: 'rgb(35, 31, 32)',
+  nearBlack: 'rgb(47, 45, 45)',
   white: 'rgb(255, 255, 255)',
   nearWhite: 'rgb(244, 242, 244)',
   moonGray: 'rgb(221, 221, 221)',
   lightSilver: 'rgb(153, 153, 153)',
+  silver: 'rgb(187, 187, 187)'
 }
 
 export const scale = {
@@ -23,7 +24,6 @@ export const scale = {
   s5: 64,
   s6: 128,
 }
-
 
 export const typeScale = {
   f6: 12,

@@ -1,30 +1,12 @@
 import * as React from 'react';
 import {color, scale, typeScale} from './styles/variables'
 
-export class Header extends React.Component {
-    state = {
-        totalBets: 0
-    }
-    componentDidUpdate(prevProps, prevState) {
-        // only update chart if the data has changed
-        if (prevProps !== this.props) {
-            this.setState({ 
-                totalBets: this.props.chosenBets.filter(x => Object.keys(x).length).length 
-            })
-        }
-    }
-
-    render() {
-        console.log(this.props, 'props')
-        // console.log(this.props.chosenBets.filter(x => Object.keys(x).length).length, ' dfdg')
-        return (
-            <header style={container}>
-                <img style={logo} src={'/images/logo.png'} />
-                <button onClick={() => this.props.onClick('betslips')} style={button}>{this.state.totalBets} bets</button>
-            </header>
-        );
-    }
-}
+export const Header = ({totalBets, onClick}) => (
+    <header style={container}>
+        <img style={logo} src={'/images/logo.png'} alt='logo'/>
+        <button onClick={() => onClick('betslips')} style={button}>{totalBets} bets</button>
+    </header>
+)
 
 const container = {
     padding: scale.s3,

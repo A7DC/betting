@@ -137,7 +137,6 @@ export default class App extends React.Component{
   }
 
   state = {
-    chosenBets: this.props.chosenBets,
     events: this.props.events,
     scrolledPastHeader: false,
     activeScreen: 'home',
@@ -147,6 +146,7 @@ export default class App extends React.Component{
     return {
       events: props.events,
       chosenBets: props.chosenBets,
+      totalBets: props.chosenBets.filter(x => Object.keys(x).length).length,
     }
   }
 
@@ -178,14 +178,14 @@ export default class App extends React.Component{
     // console.log(data.chosenBets, 'data.chosenBets')
   }
 
-  openBetSlips = (screen) => {
+  clickLink = (screen) => {
     this.setState({ activeScreen: screen}, () => console.log(this.state.activeScreen, 'activeScreen'))
   }
 
   render() {
     return (
       <div style={style}>
-        <Header onClick={this.openBetSlips} chosenBets={this.props.chosenBets} />
+        <Header onClick={this.clickLink} chosenBets={this.props.chosenBets} totalBets={this.state.totalBets}/>
         <div style={outter}>
           <EventList
             getSelection={this.getSelection}
@@ -195,10 +195,14 @@ export default class App extends React.Component{
         </div>
         <BetSlip
           activeScreen={this.state.activeScreen}
+          totalBets={this.state.totalBets}
           chosenBets={this.state.chosenBets}
           events={this.props.events}
         />
-        <BetSlipPreview onClick={this.openBetSlips} chosenBets={this.state.chosenBets} />
+        <BetSlipPreview 
+          onClick={this.clickLink}
+          totalBets={this.state.totalBets}
+          chosenBets={this.state.chosenBets} />
       </div>
     )
   }

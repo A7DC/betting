@@ -2,6 +2,7 @@ import * as React from "react";
 import { color, scale } from './styles/variables'
 import { Motion, spring } from 'react-motion'
 import { type } from './styles/typography'
+import { IconClose } from './icons'
 
 export class BetSlip extends React.Component {
 
@@ -60,9 +61,8 @@ export class BetSlip extends React.Component {
 
   // this.state.activeScreen
   render() {
-    const { chosenBets } = this.props
-    const { totalOdds, payout } = this.state
-    console.log(this.props.activeScreen, 'this.props.activeScreen')
+    const { chosenBets, totalBets } = this.props
+    const { totalOdds } = this.state
     return (
       <div>
         <Motion {...this.getMotionProps()}>
@@ -75,7 +75,7 @@ export class BetSlip extends React.Component {
 
                   }}
                 >
-                <h2 style={{ ...type.t2, color: 'white', marginBottom: scale.s3, marginTop: 0}}>Betslips (count)</h2>
+                <h2 style={{ ...type.t2, color: 'white', marginBottom: scale.s3, marginTop: 0 }}>{`Betslips (${totalBets})`}</h2>
                   <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
                     <div style={{ flex: 4, overflowY: 'scroll'}}>
                       {chosenBets.map((val, i) => {
@@ -137,7 +137,10 @@ export class BetSlip extends React.Component {
 
 const Bet = ({ chosenBet, event }) => (
   <div style={card}>
-    <h6 style={{ ...type.t5, marginBottom: scale.s2,}}>{event.home.name} - {event.away.name}</h6>
+    <div style={{display: 'flex'}}>
+      <h6 style={{ ...type.t5, marginBottom: scale.s2,}}>{event.home.name} - {event.away.name}</h6>
+      <div style={{marginLeft: 'auto'}}><IconClose /></div>
+    </div>
     <div style={{
       display: 'flex'
     }}>
@@ -153,7 +156,6 @@ const card = {
   padding: scale.s3,
   marginBottom: scale.s3,
   borderRadius: scale.s2,
-  maxHeight: scale.s5 + scale.s2,
 }
 
 const span = {
