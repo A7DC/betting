@@ -5,6 +5,8 @@ import { type } from './styles/typography'
 export class WinBonusSlider extends React.Component {
 
   state = {
+    min: 2,
+    max: 10,
     tiers: [0, 10, 50, 100],
     activeBonus: undefined,
   }
@@ -17,12 +19,13 @@ export class WinBonusSlider extends React.Component {
    if (prevProps.totalBets !== this.props.totalBets) {
     console.log(this.state, 'state')
      this.calculateWinBonus(this.props.totalBets)
+     this.calcSliderProgressBar(this.props.totalBets)
    }
  }
 
   calculateWinBonus(totalBets) {
 
-    const {tiers} = this.state
+    const {tiers, min, max} = this.state
 
 
     const createTier = (min, max, activeBonus, totalBets) => {
@@ -31,27 +34,27 @@ export class WinBonusSlider extends React.Component {
           if (totalBets === i) {
             this.setState({
               activeBonus: activeBonus,
-            }, () => this.calcSliderProgressBar(this.state.activeBonus, this.state.tiers))
+            })
           }
         }
       }
     }
 
-    createTier(2, 4, tiers[1], totalBets)
+    createTier(min, 4, tiers[1], totalBets)
     createTier(4, 6, tiers[2], totalBets)
-    createTier(6, 8, tiers[3], totalBets)
+    createTier(6, max, tiers[3], totalBets)
 
   }
 
-  calcSliderProgressBar = (activeBonus, tiers) => {
+  calcSliderProgressBar = (totalBets) => {
 
-    tiers.map((val, index) => {
-      if (val === activeBonus) {
-        if (activeBonus === 10) this.setState({slideWidth: '25%'})
-        if (activeBonus === 50) this.setState({slideWidth: '50%'})
-        if (activeBonus === 100) this.setState({slideWidth: '100%'})
+    for (let i = 0; i <= this.state.max; i++) {
+      if (totalBets === i) {
+        this.setState({
+          slideWidth: (i * 100) / (2 - 8) * -1,
+        })
       }
-    })
+    }
 
   }
 
@@ -66,7 +69,6 @@ export class WinBonusSlider extends React.Component {
                   key={i}
                   style={{
                     ...style.dot,
-                    // backgroundColor: this.getDot(val)
                     backgroundColor: val <= this.state.activeBonus ? color.yellow : color.nearBlack
                   }}
                 >
@@ -79,7 +81,7 @@ export class WinBonusSlider extends React.Component {
         <div style={style.outter}> 
           <div style={{
             ...style.inner,
-            width: this.state.slideWidth
+            width: `${this.state.slideWidth}%`
             // width: this.state.activeBonus == this.state.tiers[1] ? '25%' : ''
           }}></div>
         </div>
