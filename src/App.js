@@ -93,39 +93,9 @@ export default class App extends React.Component{
           odds: 1.19
         },
       },
-      {
-        home: {
-          name: 'Brighton and Hove Albion',
-          odds: 3.00
-        },
-        away: {
-          name: 'Southamptom',
-          odds: 3.15
-        },
-        draw: {
-          name: 'Draw',
-          odds: 2.40
-        },
-      },
-      {
-        home: {
-          name: 'Manchester United',
-          odds: 1.47
-        },
-        away: {
-          name: 'Watford',
-          odds: 7.59
-        },
-        draw: {
-          name: 'Draw',
-          odds: 2.40
-        },
-      },
     ],
     getSelection: null,
     chosenBets: [
-      {},
-      {},
       {},
       {},
       {},

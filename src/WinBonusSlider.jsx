@@ -52,7 +52,7 @@ export class WinBonusSlider extends React.Component {
       if (totalBets === i) {
         this.setState({
           slideWidth: (i * 100) / (min - (max - 2)) * -1,
-        })
+        }, console.log(this.state.slideWidth, 'slideWidth'))
       }
     }
   }
