@@ -76,9 +76,12 @@ export class WinBonusSlider extends React.Component {
   }
 
   renderLabels() {
-    const labels = this.state.tiers.map(i => {
+    const labels = this.state.tiers.map((val, i) => {
       return (
-        <span style={{ color: color.silver }}>{i}%</span>
+        <span style={{ 
+          color: val < this.state.activeBonus ? color.nearBlack : val === this.state.activeBonus ? color.yellow : color.silver
+          // color: val === this.state.activeBonus ? color.yellow : color.silver
+        }}>{i * 10}%</span>
       )
     })
     return labels
@@ -114,7 +117,7 @@ const style = {
     position: 'relative',
     backgroundColor: color.nearBlack,
     height: scale.s1 / 2,
-    width: '95%',
+    width: '100%',
     marginTop: scale.s3,
     marginBottom: scale.s3,
   },
