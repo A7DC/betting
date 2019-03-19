@@ -79,6 +79,7 @@ export class WinBonusSlider extends React.Component {
     const labels = this.state.tiers.map((val, i) => {
       return (
         <span style={{ 
+          ...type.t5,
           color: val < this.state.activeBonus ? color.nearBlack : val === this.state.activeBonus ? color.yellow : color.silver
         }}>{val}%</span>
       )

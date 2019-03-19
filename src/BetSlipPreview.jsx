@@ -68,6 +68,7 @@ export class BetSlipPreview extends React.Component {
                     ...type.t2,
                     margin: 0,
                     color: color.white,
+                    marginTop: scale.s2,
                   }}>{totalBets} bets
                   <span style={{
                     ...type.t5,
@@ -76,7 +77,7 @@ export class BetSlipPreview extends React.Component {
                     display: 'block',
                   }}>+ win bonus</span>
                   </h3>
-                  <div style={{flex: 2, paddingLeft: scale.s4}}>
+                  <div style={{flex: 2, paddingLeft: scale.s4, marginTop: 2}}>
                     <WinBonusSlider totalBets={totalBets} />
                   </div>
                 </div>
@@ -90,10 +91,7 @@ export class BetSlipPreview extends React.Component {
 }
 
 const style = {
-  paddingLeft: scale.s4,
-  paddingRight: scale.s4,
-  paddingTop: scale.s3,
-  paddingBottom: scale.s3,
+  padding: scale.s3,
   position: 'fixed',
   left: 0,
   right: 0,

@@ -189,6 +189,7 @@ const style = {
 
 const outter = {
   padding: scale.s3,
+  paddingBottom: scale.s6,
   position: 'relative',
   height: '100%',
   width: '100%',
